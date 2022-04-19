@@ -5,6 +5,8 @@ from music.serializers import ArtistSerializer, SongSerializer
 
 pytestmark = pytest.mark.django_db
 
+TEST_DATABASE_PREFIX = 'test_'
+
 
 class TestArtistSerializer(TestCase):
     def setUp(self) -> None:

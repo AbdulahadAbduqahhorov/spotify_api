@@ -1,0 +1,29 @@
+name: Music API CI
+
+on: [push]
+
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODUL: Spotify.settings
+    services:
+      postgres:
+        image: postgres:12.9
+        env:
+          POSTGRES_NAME: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    - name: Django Testing
+      run:  pytest

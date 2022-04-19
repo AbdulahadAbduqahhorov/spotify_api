@@ -4,8 +4,6 @@ from music.models import Artist, Album, Song
 
 pytestmark = pytest.mark.django_db
 
-TEST_DATABASE_PREFIX = 'test_'
-
 
 class TestArtistViewSet(TestCase):
     def setUp(self) -> None:
